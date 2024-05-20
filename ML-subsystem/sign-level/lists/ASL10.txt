@@ -1,0 +1,10 @@
+book
+brother
+busy
+cold_sick
+eat
+excuse_me
+father
+fine_welcome
+finish
+hello

@@ -1,0 +1,93 @@
+MODEL 1
+model = Sequential()
+model.add(LSTM(128, input_shape=input_shape, return_sequences=True, activation='relu'))
+model.add(Dropout(0.5))
+model.add(LSTM(64, activation='relu'))
+model.add(Dense(32, activation='relu'))
+model.add(Dense(3, activation='softmax'))
+
+MODEL 3
+model = Sequential()
+model.add(Bidirectional(LSTM(128, input_shape=input_shape, return_sequences=True, activation='relu')))
+model.add(Bidirectional(LSTM(64, input_shape=input_shape, return_sequences=False, activation='relu')))
+model.add(Dropout(0.5))
+model.add(Dense(32, activation='relu'))
+model.add(Dropout(0.5))
+model.add(Dense(len(class_folders), activation='softmax'))
+
+MODEL 4
+model = Sequential()
+model.add(Bidirectional(LSTM(64, input_shape=input_shape, return_sequences=True, activation='relu')))
+model.add(Bidirectional(LSTM(128, input_shape=input_shape, return_sequences=True, activation='relu')))
+model.add(Bidirectional(LSTM(64, input_shape=input_shape, return_sequences=False, activation='relu')))
+model.add(Dropout(0.5))
+model.add(Dense(32, activation='relu'))
+model.add(Dropout(0.5))
+model.add(Dense(len(class_folders), activation='softmax'))
+
+MODEL 5
+
+model = Sequential()
+model.add(Bidirectional(LSTM(64, input_shape=input_shape, return_sequences=True, activation='relu')))
+model.add(Bidirectional(LSTM(128, input_shape=input_shape, return_sequences=True, activation='relu')))
+model.add(Bidirectional(LSTM(64, input_shape=input_shape, return_sequences=False, activation='relu')))
+model.add(Dropout(0.5))
+model.add(Dense(32, activation='relu'))
+model.add(Dropout(0.5))
+model.add(Dense(len(class_folders), activation='softmax'))
+
+MODEL 6
+l2_reg = l2(0.001)
+
+model = Sequential()
+model.add(Bidirectional(LSTM(32, input_shape=input_shape, return_sequences=True, activation='tanh', kernel_regularizer=l2_reg)))
+model.add(Bidirectional(LSTM(64, input_shape=input_shape, return_sequences=True, activation='tanh', kernel_regularizer=l2_reg)))
+model.add(Bidirectional(LSTM(32, input_shape=input_shape, return_sequences=False, activation='tanh', kernel_regularizer=l2_reg)))
+model.add(Dropout(0.5))
+model.add(Dense(32, activation='relu'))
+model.add(Dropout(0.5))
+model.add(Dense(len(class_folders), activation='softmax'))
+
+MODEL 7
+l2_reg = l2(0.001)
+
+model = Sequential()
+model.add(Bidirectional(LSTM(32, input_shape=input_shape, return_sequences=True, activation='tanh', kernel_regularizer=l2_reg)))
+model.add(Bidirectional(LSTM(64, input_shape=input_shape, return_sequences=True, activation='tanh', kernel_regularizer=l2_reg)))
+model.add(Bidirectional(LSTM(32, input_shape=input_shape, return_sequences=False, activation='tanh', kernel_regularizer=l2_reg)))
+model.add(Dropout(0.5))
+model.add(Dense(32, activation='relu'))
+model.add(Dropout(0.5))
+model.add(Dense(len(class_folders), activation='softmax'))
+
+learning_rate = 0.001
+optimizer = Adam(lr=learning_rate, clipnorm=1.0)
+
+model.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
+early_stopping = EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
+
+# Train the model
+history = model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=200, batch_size=32,
+                    callbacks=[checkpoint, early_stopping])
+
+
+MODEL 8
+l2_reg = l2(0.001)
+
+model = Sequential()
+model.add(Bidirectional(LSTM(64, input_shape=input_shape, return_sequences=True, activation='tanh', kernel_regularizer=l2_reg)))
+model.add(Bidirectional(LSTM(128, input_shape=input_shape, return_sequences=True, activation='tanh', kernel_regularizer=l2_reg)))
+model.add(Bidirectional(LSTM(64, input_shape=input_shape, return_sequences=False, activation='tanh', kernel_regularizer=l2_reg)))
+model.add(Dropout(0.5))
+model.add(Dense(32, activation='relu'))
+model.add(Dropout(0.5))
+model.add(Dense(len(class_folders), activation='softmax'))
+
+learning_rate = 0.001
+optimizer = Adam(lr=learning_rate, clipnorm=1.0)
+
+model.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
+early_stopping = EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
+
+# Train the model
+history = model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=200, batch_size=32,

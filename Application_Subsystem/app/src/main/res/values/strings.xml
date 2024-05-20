@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">ASLator</string>
+
+    <string name="initial_title">ASLator</string>
+    <string name="logged_in_title">Welcome back!</string>
+    <string name="logged_out_title">You’re logged out.</string>
+    <string name="log_in_button">Log In</string>
+    <string name="log_out_button">Log Out</string>
+    <string name="name_label">Name</string>
+    <string name="email_label">Email</string>
+
+    <string name="request_permissions">Allow Permissions</string>
+    <string name="something_went_wrong">Error</string>
+    <string name="permission_rationale">Permission rationale</string>
+    <string name="allow_permission">allow permissions</string>
+    <string name="ok">ok</string>
+    <string name="settings">settings</string>
+
+    <string name="take_photo">Take Photo</string>
+    <string name="start_capture">Capture Video</string>
+    <string name="stop_capture">Finish Recording</string>
+
+    <string name="lesson_button">Begin Lesson</string>
+    <string name="lesson_unavailable_button">Lesson Locked</string>
+    <string name="lesson_text">Lesson #</string>
+    <string name="lesson01">Learning the Alphabet</string>
+    <string name="lesson02">Introduce Yourself</string>
+    <string name="lesson03">Directions</string>
+    <string name="lesson04">Good Morning, Good Night</string>
+    <string name="lesson05">When Duty Calls</string>
+    <string name="lesson06">General Emotions</string>
+    <string name="lesson07">Talking About the Weather</string>
+    <string name="lesson08">Ordering Food</string>
+    <string name="lesson09">Lets Talk Sports</string>
+    <string name="lesson10">Graduation</string>
+
+    <string name="ipaddress">http://47.218.188.73:81</string>
+</resources>
